@@ -1,0 +1,303 @@
+export const indianAirports = {
+  DEL: { name: "Delhi", fullName: "Indira Gandhi Intl (DEL)", lat: 28.5562, lng: 77.1000, hub: true },
+  BOM: { name: "Mumbai", fullName: "Chhatrapati Shivaji Intl (BOM)", lat: 19.0896, lng: 72.8656, hub: true },
+  MAA: { name: "Chennai", fullName: "Chennai Intl (MAA)", lat: 12.9941, lng: 80.1709, hub: true },
+  BLR: { name: "Bengaluru", fullName: "Kempegowda Intl (BLR)", lat: 13.1986, lng: 77.7066, hub: true },
+  HYD: { name: "Hyderabad", fullName: "Rajiv Gandhi Intl (HYD)", lat: 17.2403, lng: 78.4294, hub: true },
+  CCU: { name: "Kolkata", fullName: "Netaji Subhash Chandra Bose (CCU)", lat: 22.6520, lng: 88.4463, hub: false },
+  COK: { name: "Kochi", fullName: "Cochin Intl (COK)", lat: 10.1520, lng: 76.4019, hub: false },
+  MDU: { name: "Madurai", fullName: "Madurai Airport (MDU)", lat: 9.8345, lng: 78.0934, hub: false },
+  GOI: { name: "Goa", fullName: "Goa Airport (GOI)", lat: 15.3808, lng: 73.8313, hub: false },
+  PNQ: { name: "Pune", fullName: "Pune Airport (PNQ)", lat: 18.5822, lng: 73.9197, hub: false }
+};
+
+export const airlinesList = [
+  { id: 'Air India', code: 'AI', icao: 'AIC', name: 'Air India', accent: '#d97706', badge: 'AI' },
+  { id: 'IndiGo', code: '6E', icao: 'IGO', name: 'IndiGo Airlines', accent: '#0284c7', badge: '6E' },
+  { id: 'Vistara', code: 'UK', icao: 'VTI', name: 'Vistara', accent: '#6366f1', badge: 'UK' },
+  { id: 'Air India Express', code: 'IX', icao: 'AXB', name: 'Air India Express', accent: '#ea580c', badge: 'IX' },
+  { id: 'Akasa Air', code: 'QP', icao: 'AKJ', name: 'Akasa Air', accent: '#f59e0b', badge: 'QP' },
+  { id: 'Demo Airline', code: 'DA', icao: 'DEMO', name: 'Demo Operational Fleet', accent: '#06b6d4', badge: 'DA' }
+];
+
+export const airlineDatasets = {
+  'Air India': {
+    stats: { totalFlights: 420, delayedFlights: 18, affectedPax: 156, availableAircraft: 8, availableCrew: 14, gateConflicts: 3, otp: '91.8%' },
+    flights: [
+      {
+        id: "AI204",
+        flightNumber: "AI 204",
+        icao: "AIC204",
+        origin: "MDU",
+        destination: "MAA",
+        route: "MDU → MAA",
+        std: "17:45", etd: "19:15", sta: "19:00", eta: "20:30",
+        delayMinutes: 90,
+        status: "DELAYED",
+        statusType: "critical",
+        tailNumber: "VT-IFZ",
+        aircraftType: "A320neo",
+        gate: "Gate A4",
+        crew: { captain: "Capt. Rajiv Sen", fo: "FO Vijay Kumar", crewCode: "MAA-Base R12" },
+        paxOnBoard: 124,
+        connectingPax: 24,
+        impactLevel: "HIGH",
+        coordinates: { currentLat: 11.41, currentLng: 79.13, originCoords: [9.8345, 78.0934], destCoords: [12.9941, 80.1709] },
+        downstreamFlight: "AI 1892 (MAA → DEL)",
+        downstreamRoute: "MAA → DEL",
+        downstreamCoords: [[12.9941, 80.1709], [28.5562, 77.1000]]
+      },
+      {
+        id: "AI1892",
+        flightNumber: "AI 1892",
+        icao: "AIC1892",
+        origin: "MAA",
+        destination: "DEL",
+        route: "MAA → DEL",
+        std: "20:00", etd: "21:05", sta: "22:45", eta: "23:50",
+        delayMinutes: 65,
+        status: "AT RISK",
+        statusType: "warning",
+        tailNumber: "VT-IFZ",
+        aircraftType: "A320neo",
+        gate: "Gate B4",
+        crew: { captain: "Capt. R. Deshmukh", fo: "FO S. Iyer", crewCode: "DEL-Base R08" },
+        paxOnBoard: 168,
+        connectingPax: 15,
+        impactLevel: "MEDIUM",
+        coordinates: { currentLat: 20.77, currentLng: 78.63, originCoords: [12.9941, 80.1709], destCoords: [28.5562, 77.1000] }
+      },
+      {
+        id: "AI502",
+        flightNumber: "AI 502",
+        icao: "AIC502",
+        origin: "DEL",
+        destination: "BOM",
+        route: "DEL → BOM",
+        std: "21:00", etd: "21:00", sta: "23:15", eta: "23:15",
+        delayMinutes: 0,
+        status: "ON TIME",
+        statusType: "normal",
+        tailNumber: "VT-ALX",
+        aircraftType: "B777-300ER",
+        gate: "Gate T3-12",
+        crew: { captain: "Capt. V. Sharma", fo: "FO P. Kapoor", crewCode: "DEL-Intl D01" },
+        paxOnBoard: 280,
+        connectingPax: 8,
+        impactLevel: "LOW",
+        coordinates: { currentLat: 23.82, currentLng: 74.98, originCoords: [28.5562, 77.1000], destCoords: [19.0896, 72.8656] }
+      },
+      {
+        id: "AI809",
+        flightNumber: "AI 809",
+        icao: "AIC809",
+        origin: "BLR",
+        destination: "HYD",
+        route: "BLR → HYD",
+        std: "18:20", etd: "18:20", sta: "19:30", eta: "19:30",
+        delayMinutes: 0,
+        status: "ON TIME",
+        statusType: "normal",
+        tailNumber: "VT-ANK",
+        aircraftType: "A321neo",
+        gate: "Gate 12",
+        crew: { captain: "Capt. S. Sengupta", fo: "FO D. Patel", crewCode: "BLR-Base B02" },
+        paxOnBoard: 195,
+        connectingPax: 4,
+        impactLevel: "LOW",
+        coordinates: { currentLat: 15.22, currentLng: 78.06, originCoords: [13.1986, 77.7066], destCoords: [17.2403, 78.4294] }
+      }
+    ]
+  },
+  'IndiGo': {
+    stats: { totalFlights: 482, delayedFlights: 14, affectedPax: 124, availableAircraft: 6, availableCrew: 18, gateConflicts: 2, otp: '94.2%' },
+    flights: [
+      {
+        id: "6E1234",
+        flightNumber: "6E 1234",
+        icao: "IGO1234",
+        origin: "MDU",
+        destination: "DEL",
+        route: "MDU → DEL",
+        std: "18:30", etd: "20:00", sta: "21:20", eta: "22:50",
+        delayMinutes: 90,
+        status: "DELAYED",
+        statusType: "critical",
+        tailNumber: "VT-IFZ",
+        aircraftType: "A320neo",
+        gate: "Gate A4",
+        crew: { captain: "Capt. Rajiv Sen", fo: "FO A. Menon", crewCode: "DEL-Base R12" },
+        paxOnBoard: 174,
+        connectingPax: 24,
+        impactLevel: "HIGH",
+        coordinates: { currentLat: 19.19, currentLng: 77.59, originCoords: [9.8345, 78.0934], destCoords: [28.5562, 77.1000] },
+        downstreamFlight: "6E 1892 (DEL → BOM)",
+        downstreamRoute: "DEL → BOM",
+        downstreamCoords: [[28.5562, 77.1000], [19.0896, 72.8656]]
+      },
+      {
+        id: "6E2108",
+        flightNumber: "6E 2108",
+        icao: "IGO2108",
+        origin: "BOM",
+        destination: "DEL",
+        route: "BOM → DEL",
+        std: "19:15", etd: "19:15", sta: "21:30", eta: "21:30",
+        delayMinutes: 45,
+        status: "AT RISK",
+        statusType: "warning",
+        tailNumber: "VT-IMQ",
+        aircraftType: "A321",
+        gate: "Gate A4",
+        crew: { captain: "Capt. K. Malhotra", fo: "FO S. Roy", crewCode: "BOM-Base C04" },
+        paxOnBoard: 210,
+        connectingPax: 18,
+        impactLevel: "MEDIUM",
+        coordinates: { currentLat: 23.82, currentLng: 74.98, originCoords: [19.0896, 72.8656], destCoords: [28.5562, 77.1000] }
+      },
+      {
+        id: "6E502",
+        flightNumber: "6E 502",
+        icao: "IGO0502",
+        origin: "DEL",
+        destination: "CCU",
+        route: "DEL → CCU",
+        std: "23:45", etd: "23:45", sta: "02:10", eta: "02:10",
+        delayMinutes: 0,
+        status: "ON TIME",
+        statusType: "normal",
+        tailNumber: "VT-ALX",
+        aircraftType: "A320neo",
+        gate: "Gate T3-12",
+        crew: { captain: "Capt. V. Sharma", fo: "FO P. Kapoor", crewCode: "DEL-Intl D01" },
+        paxOnBoard: 180,
+        connectingPax: 38,
+        impactLevel: "LOW",
+        coordinates: { currentLat: 25.60, currentLng: 82.77, originCoords: [28.5562, 77.1000], destCoords: [22.6520, 88.4463] }
+      }
+    ]
+  },
+  'Vistara': {
+    stats: { totalFlights: 210, delayedFlights: 6, affectedPax: 48, availableAircraft: 4, availableCrew: 10, gateConflicts: 1, otp: '96.4%' },
+    flights: [
+      {
+        id: "UK814",
+        flightNumber: "UK 814",
+        icao: "VTI814",
+        origin: "BLR",
+        destination: "DEL",
+        route: "BLR → DEL",
+        std: "19:00", etd: "19:40", sta: "21:45", eta: "22:25",
+        delayMinutes: 40,
+        status: "AT RISK",
+        statusType: "warning",
+        tailNumber: "VT-TVA",
+        aircraftType: "A320neo",
+        gate: "Gate 08",
+        crew: { captain: "Capt. M. Kapoor", fo: "FO A. Das", crewCode: "BLR-Vistara" },
+        paxOnBoard: 154,
+        connectingPax: 12,
+        impactLevel: "MEDIUM",
+        coordinates: { currentLat: 20.87, currentLng: 77.40, originCoords: [13.1986, 77.7066], destCoords: [28.5562, 77.1000] }
+      },
+      {
+        id: "UK945",
+        flightNumber: "UK 945",
+        icao: "VTI945",
+        origin: "BOM",
+        destination: "DEL",
+        route: "BOM → DEL",
+        std: "20:30", etd: "20:30", sta: "22:40", eta: "22:40",
+        delayMinutes: 0,
+        status: "ON TIME",
+        statusType: "normal",
+        tailNumber: "VT-TVB",
+        aircraftType: "B787-9",
+        gate: "Gate 14",
+        crew: { captain: "Capt. H. Mehta", fo: "FO K. Nair", crewCode: "BOM-Vistara" },
+        paxOnBoard: 240,
+        connectingPax: 6,
+        impactLevel: "LOW",
+        coordinates: { currentLat: 23.82, currentLng: 74.98, originCoords: [19.0896, 72.8656], destCoords: [28.5562, 77.1000] }
+      }
+    ]
+  },
+  'Air India Express': {
+    stats: { totalFlights: 180, delayedFlights: 8, affectedPax: 72, availableAircraft: 3, availableCrew: 7, gateConflicts: 1, otp: '92.1%' },
+    flights: [
+      {
+        id: "IX342",
+        flightNumber: "IX 342",
+        icao: "AXB342",
+        origin: "COK",
+        destination: "DEL",
+        route: "COK → DEL",
+        std: "17:10", etd: "18:25", sta: "20:30", eta: "21:45",
+        delayMinutes: 75,
+        status: "DELAYED",
+        statusType: "critical",
+        tailNumber: "VT-AXB",
+        aircraftType: "B737-800",
+        gate: "Gate 04",
+        crew: { captain: "Capt. J. Thomas", fo: "FO S. Paul", crewCode: "COK-Base" },
+        paxOnBoard: 165,
+        connectingPax: 18,
+        impactLevel: "HIGH",
+        coordinates: { currentLat: 19.35, currentLng: 76.75, originCoords: [10.1520, 76.4019], destCoords: [28.5562, 77.1000] }
+      }
+    ]
+  },
+  'Akasa Air': {
+    stats: { totalFlights: 140, delayedFlights: 3, affectedPax: 22, availableAircraft: 5, availableCrew: 9, gateConflicts: 0, otp: '97.1%' },
+    flights: [
+      {
+        id: "QP1102",
+        flightNumber: "QP 1102",
+        icao: "AKJ1102",
+        origin: "PNQ",
+        destination: "DEL",
+        route: "PNQ → DEL",
+        std: "18:50", etd: "18:50", sta: "21:10", eta: "21:10",
+        delayMinutes: 0,
+        status: "ON TIME",
+        statusType: "normal",
+        tailNumber: "VT-YAA",
+        aircraftType: "B737-MAX8",
+        gate: "Gate 02",
+        crew: { captain: "Capt. A. Joshi", fo: "FO R. Kulkarni", crewCode: "PNQ-Base" },
+        paxOnBoard: 160,
+        connectingPax: 5,
+        impactLevel: "LOW",
+        coordinates: { currentLat: 23.57, currentLng: 75.50, originCoords: [18.5822, 73.9197], destCoords: [28.5562, 77.1000] }
+      }
+    ]
+  },
+  'Demo Airline': {
+    stats: { totalFlights: 482, delayedFlights: 14, affectedPax: 124, availableAircraft: 6, availableCrew: 18, gateConflicts: 2, otp: '94.2%' },
+    flights: [
+      {
+        id: "DA1234",
+        flightNumber: "DA 1234",
+        icao: "DEM1234",
+        origin: "MDU",
+        destination: "MAA",
+        route: "MDU → MAA",
+        std: "18:30", etd: "20:00", sta: "21:20", eta: "22:50",
+        delayMinutes: 90,
+        status: "DELAYED",
+        statusType: "critical",
+        tailNumber: "VT-IFZ",
+        aircraftType: "A320neo",
+        gate: "Gate A4",
+        crew: { captain: "Capt. Rajiv Sen", fo: "FO A. Menon", crewCode: "DEL-Base R12" },
+        paxOnBoard: 174,
+        connectingPax: 24,
+        impactLevel: "HIGH",
+        coordinates: { currentLat: 11.41, currentLng: 79.13, originCoords: [9.8345, 78.0934], destCoords: [12.9941, 80.1709] },
+        downstreamFlight: "DA 1892 (MAA → DEL)",
+        downstreamRoute: "MAA → DEL",
+        downstreamCoords: [[12.9941, 80.1709], [28.5562, 77.1000]]
+      }
+    ]
+  }
+};
