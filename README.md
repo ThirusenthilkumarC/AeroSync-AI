@@ -1,348 +1,665 @@
-<div align="center">
-
 # ✈️ AeroSync AI
 
-### AI-Powered Airline Disruption Recovery & Decision Support System
+### 🧠 AI-Powered Airline Disruption Recovery & Decision Support Platform
 
-**Recover Faster. Decide Smarter. Keep Every Connection Moving.**
+> **Detect → Analyze → Predict → Optimize → Simulate → Explain → Approve → Re-plan**
 
-<br/>
+AeroSync AI is an intelligent **airline operations decision-support platform** designed to help airline operations teams respond to disruptions faster and more effectively.
 
-[![React](https://img.shields.io/badge/Frontend-React.js-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
-[![Node.js](https://img.shields.io/badge/Backend-Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Python](https://img.shields.io/badge/AI-Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-[![Supabase](https://img.shields.io/badge/Database-Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
-[![Vite](https://img.shields.io/badge/Build-Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
+Instead of looking at a disruption as a single delayed flight, AeroSync analyzes its **complete operational impact** across aircraft, crew, gates, passengers, connections, and the wider airline network.
 
-<br/>
+---
 
-**🚨 Detect • 🔍 Analyze • 🤖 Optimize • 🎲 Simulate • 🧠 Explain • 🔄 Replan**
+<div align="center">
+
+### 🚨 From One Disruption to Network-Wide Recovery
+
+**✈️ Aircraft**
+  ＋  
+**👨‍✈️ Crew**
+  ＋  
+**🛫 Gates**
+  ＋  
+**👥 Passengers**
+  ＋  
+**🔗 Connections**
+  ＋  
+**🌐 Network Impact**
+  ＋  
+**🤖 AI Optimization**
 
 </div>
 
 ---
 
-# ✈️ What is AeroSync AI?
+## 🚨 Problem Statement
 
-**AeroSync AI** is an intelligent airline disruption recovery and decision-support platform designed to help Airline Operations Control Centers respond to delays, cancellations, aircraft conflicts, crew constraints, gate conflicts, and passenger connection risks.
+A single delayed aircraft or crew member can trigger a **chain reaction across an airline network**.
 
-Instead of analyzing each operational problem separately, AeroSync connects:
+```text
+                    🚨 Flight Delay
+                          │
+                          ▼
+                  ✈️ Aircraft Rotation
+                          │
+                          ▼
+                   👨‍✈️ Crew Duty Risk
+                          │
+                          ▼
+                    🛫 Gate Conflict
+                          │
+                          ▼
+                   👥 Passenger Impact
+                          │
+                          ▼
+                  🔗 Missed Connections
+                          │
+                          ▼
+                   🌐 Network Cascade
+```
+
+### The Challenge
+
+Airline operations teams must make recovery decisions under **extreme time pressure** while simultaneously considering:
+
+* ✈️ Flight delays and cancellations
+* ✈️ Aircraft availability and rotations
+* 👨‍✈️ Crew duty-time and rest constraints
+* 🛫 Gate availability and conflicts
+* 👥 Passenger connectivity
+* 🔗 Downstream flight dependencies
+* 🌐 Network-wide operational impact
+* 🔄 Continuously changing disruption conditions
+
+Traditional manual recovery can solve one problem while accidentally creating another.
+
+### 💡 AeroSync's Approach
+
+AeroSync turns a disruption into a **network-level decision problem** and helps controllers understand:
+
+> **"If I take this action, what happens next?"**
+
+---
+
+# 💡 Our Solution
+
+AeroSync AI provides a centralized operational intelligence platform that combines **optimization, prediction, simulation, graph analysis, and AI explanations**.
+
+```text
+🚨 DISRUPTION
+      │
+      ▼
+🔍 Detect Impact
+      │
+      ▼
+🌐 Analyze Cascade
+      │
+      ▼
+🔮 Predict Risk
+      │
+      ▼
+🧩 Validate Constraints
+      │
+      ▼
+🤖 Generate Recovery Plans
+      │
+      ▼
+🎲 Simulate Alternatives
+      │
+      ▼
+🧠 Explain Recommendation
+      │
+      ▼
+👨‍✈️ Human Approval
+      │
+      ▼
+🔄 Continuous Re-Planning
+```
+
+### 👨‍✈️ Human-in-the-Loop
+
+AeroSync AI **does not replace the airline operations controller**.
+
+Instead, it provides:
+
+* Intelligent recommendations
+* Explainable recovery options
+* Constraint validation
+* What-if simulation
+* Network impact analysis
+
+The **final operational decision remains with the human controller**.
+
+---
+
+# 🖥️ Product Preview
+
+## 📊 Operations Dashboard
+
+<div align="center">
+
+<img src="screenshots/dashboard.png" alt="AeroSync AI Operations Dashboard" width="900"/>
+
+**AeroSync AI — Airline Operations Control Dashboard**
+
+</div>
+
+---
+
+## 🚨 Disruption Center
+
+<div align="center">
+
+<img src="screenshots/disruption-center.png" alt="AeroSync AI Disruption Center" width="900"/>
+
+*Monitor active disruptions and understand their operational impact.*
+
+</div>
+
+---
+
+## 🤖 AI Recovery Planner
+
+<div align="center">
+
+<img src="screenshots/recovery-plan.png" alt="AeroSync AI Recovery Planner" width="900"/>
+
+*Generate, compare, and evaluate multiple recovery alternatives.*
+
+</div>
+
+---
+
+## 🎲 What-If Sandbox
+
+<div align="center">
+
+<img src="screenshots/what-if.png" alt="AeroSync AI What-If Sandbox" width="900"/>
+
+*Simulate operational decisions before applying them.*
+
+</div>
+
+---
+
+## 🌐 World Airline Network
+
+<div align="center">
+
+<img src="screenshots/network-map.png" alt="AeroSync AI Network Map" width="900"/>
+
+*Visualize airports, routes, aircraft, and disruption cascades.*
+
+</div>
+
+---
+
+# ✨ Key Features
+
+| Feature                           | What AeroSync Does                                                        |
+| --------------------------------- | ------------------------------------------------------------------------- |
+| 🚨 **Disruption Center**          | Monitor delays, cancellations, aircraft, crew, gates and connection risks |
+| 🤖 **AI Recovery Planner**        | Generate and compare multiple recovery alternatives                       |
+| 🌐 **Disruption Cascade Map**     | Visualize how a disruption propagates through the network                 |
+| 🎲 **What-If Sandbox**            | Test recovery decisions before applying them                              |
+| 👨‍✈️ **Crew & FDTL Monitoring**  | Track duty hours, rest requirements and assignment conflicts              |
+| 👥 **Passenger Impact Analysis**  | Identify affected and connecting passengers                               |
+| 🛫 **Aircraft & Gate Management** | Monitor resources, rotations, conflicts and turnaround time               |
+| 🔄 **Live Auto-Replanning**       | Recalculate recovery plans when new disruptions occur                     |
+| 🧠 **Explainable AI**             | Explain why a recovery option is recommended                              |
+| 📊 **Network Impact Analysis**    | Understand downstream and network-wide consequences                       |
+
+---
+
+# 🔥 Core AeroSync Workflow
+
+### 1️⃣ Detect
+
+Identify an operational disruption.
+
+```text
+Flight Delay
+Cancellation
+Aircraft Issue
+Crew Issue
+Gate Conflict
+```
+
+⬇️
+
+### 2️⃣ Analyze
+
+Determine everything affected by the disruption.
+
+```text
+Aircraft
+Crew
+Gate
+Passengers
+Connections
+Downstream Flights
+```
+
+⬇️
+
+### 3️⃣ Predict
+
+Estimate potential future consequences.
+
+```text
+Delay Risk
+Crew Risk
+Connection Risk
+Network Risk
+```
+
+⬇️
+
+### 4️⃣ Optimize
+
+Generate feasible recovery plans using operational constraints.
+
+```text
+Plan A
+Plan B
+Plan C
+```
+
+⬇️
+
+### 5️⃣ Simulate
+
+Use the **What-If Sandbox** to test possible actions.
+
+> "What happens if we swap this aircraft?"
+
+> "What happens if we delay the next flight?"
+
+> "What happens if passengers are rebooked?"
+
+⬇️
+
+### 6️⃣ Explain
+
+AeroSync provides an understandable explanation for the recommended plan.
+
+⬇️
+
+### 7️⃣ Approve
+
+The operations controller reviews and approves the recovery.
+
+⬇️
+
+### 8️⃣ Re-plan
+
+When new operational information arrives, AeroSync recalculates the recovery plan.
+
+---
+
+# 🧠 Hybrid AI Architecture
+
+AeroSync AI uses a **Hybrid AI Architecture** instead of depending on a single AI model.
+
+Different technologies solve different operational problems.
+
+```text
+                         🚨 DISRUPTION
+                               │
+                               ▼
+                      🔍 Impact Analysis
+                               │
+                               ▼
+                   🔮 Delay Risk Prediction
+                               │
+                               ▼
+                    🧩 Constraint Validation
+                               │
+                               ▼
+                     🤖 OR-Tools Optimizer
+                               │
+                               ▼
+                    📋 Recovery Alternatives
+                               │
+                               ▼
+                      🎲 What-If Simulation
+                               │
+                               ▼
+                        🧠 AI Copilot
+                               │
+                               ▼
+                       👨‍✈️ Human Approval
+                               │
+                               ▼
+                         🔄 Auto-Replan
+```
+
+---
+
+# 🤖 AI Technologies
+
+| Technology                    | Role in AeroSync                              |
+| ----------------------------- | --------------------------------------------- |
+| 🧩 **Google OR-Tools**        | Constraint optimization and recovery planning |
+| 🌳 **XGBoost / LightGBM**     | Delay and disruption risk prediction          |
+| 🌐 **Graph Analysis**         | Network dependency and cascade analysis       |
+| 🎲 **Monte Carlo Simulation** | What-if and uncertainty simulation            |
+| 🧠 **LLM**                    | AI Copilot and natural-language explanations  |
+| 📚 **RAG**                    | Retrieval of operational rules and policies   |
+| 🚨 **Isolation Forest**       | Detection of unusual operational patterns     |
+
+### Why Hybrid AI?
+
+Airline recovery is not simply a text-generation problem.
+
+It requires:
+
+**Prediction + Optimization + Constraints + Simulation + Explainability**
+
+Therefore, AeroSync combines multiple AI and mathematical techniques to solve different parts of the problem.
+
+---
+
+# 🧩 OR-Tools — Recovery Optimization Engine
+
+OR-Tools acts as the core optimization engine of AeroSync.
+
+It evaluates multiple operational variables simultaneously:
 
 ```text
 ✈️ Aircraft
-      +
+     +
 👨‍✈️ Crew
-      +
-🛫 Gates
-      +
-👥 Passengers
-      +
-🔗 Connections
-      +
-🌐 Network Impact
-      +
-🤖 AI Optimization
+     +
+🛫 Gate
+     +
+⏱️ Flight Timing
+     +
+👥 Passenger Connections
+     +
+📋 Operational Constraints
+     │
+     ▼
+🧩 OR-TOOLS
+     │
+     ├──────────────┬──────────────┐
+     ▼              ▼              ▼
+  📋 PLAN A       📋 PLAN B      📋 PLAN C
+```
 
-The system helps operations teams understand the complete impact of a disruption, compare recovery alternatives, simulate possible consequences, and make better-informed decisions.
+Each recovery alternative can be evaluated based on:
 
-🚨 Problem Statement
+* Feasibility
+* Delay impact
+* Passenger impact
+* Crew constraints
+* Aircraft availability
+* Gate availability
+* Network impact
 
-A single delayed aircraft or crew member can create a chain reaction across an airline network.
+---
 
-             🚨 Flight Delay
-                    │
-                    ▼
-          ✈️ Aircraft Rotation
-                    │
-                    ▼
-          👨‍✈️ Crew Duty Risk
-                    │
-                    ▼
-             🛫 Gate Conflict
-                    │
-                    ▼
-          👥 Passenger Impact
-                    │
-                    ▼
-          🔗 Missed Connections
-                    │
-                    ▼
-            🌐 Network Cascade
+# 🎲 What-If Simulation
 
-            The Challenge
+AeroSync allows controllers to test decisions **before committing them**.
 
-Airline operations teams need to make recovery decisions under intense time pressure while considering multiple constraints simultaneously.
+### Example
 
-AeroSync addresses:
-✈️ Flight delays
-❌ Flight cancellations
-✈️ Aircraft availability
-👨‍✈️ Crew duty constraints
-🛫 Gate conflicts
-👥 Passenger connections
-🔗 Downstream flight impacts
-🌐 Network-wide disruption
-🔄 Continuous re-planning
+```text
+Current Situation
 
-💡 Our Solution
+AI 204
+MDU → MAA
 
-AeroSync AI provides a centralized operational decision-support platform.
+Delay detected
+       │
+       ▼
+Affected aircraft rotation
+       │
+       ▼
+Crew duty risk
+       │
+       ▼
+Passenger connection risk
+```
 
-When a disruption occurs:
-🚨 Disruption
-      ↓
-🔍 Detect Impact
-      ↓
-🌐 Analyze Cascade
-      ↓
-🔮 Predict Risk
-      ↓
-🧩 Check Constraints
-      ↓
-🤖 Generate Recovery Plans
-      ↓
-🎲 Simulate Options
-      ↓
+The controller can test:
+
+```text
+What if we...
+
+✈️ Swap aircraft?
+👨‍✈️ Assign another crew?
+🛫 Change the gate?
+⏱️ Adjust departure time?
+👥 Rebook passengers?
+```
+
+AeroSync then evaluates the possible consequences.
+
+---
+
+# 🌐 Disruption Cascade Analysis
+
+AeroSync represents airline operations as an interconnected network.
+
+```text
+             ✈️ Aircraft
+                  │
+                  ▼
+             👨‍✈️ Crew
+                  │
+                  ▼
+             🛫 Gate
+                  │
+                  ▼
+            🛫 Flight
+                  │
+                  ▼
+            👥 Passengers
+                  │
+                  ▼
+          🔗 Connections
+                  │
+                  ▼
+          🌐 Network Impact
+```
+
+This helps controllers move from:
+
+> **"Which flight is delayed?"**
+
+to:
+
+> **"What will this delay affect across the network?"**
+
+---
+
+# 👨‍✈️ Crew & FDTL Monitoring
+
+AeroSync monitors crew-related operational constraints such as:
+
+* 👨‍✈️ Crew availability
+* ⏱️ Duty duration
+* 😴 Rest requirements
+* ✈️ Flight assignment compatibility
+* ⚠️ Duty-limit risk
+* 🔄 Next-flight compatibility
+
+This helps prevent a recovery decision from creating a new crew constraint violation.
+
+---
+
+# 👥 Passenger Impact Analysis
+
+A disruption is not only an aircraft problem.
+
+AeroSync identifies:
+
+* 👥 Affected passengers
+* 🔗 Connecting passengers
+* ⚠️ Missed connection risks
+* 💺 Available seats
+* 🔄 Rebooking options
+* ⭐ Passenger priority
+* 🌐 Downstream passenger impact
+
+---
+
+# 🛫 Aircraft & Gate Intelligence
+
+AeroSync continuously considers:
+
+### Aircraft
+
+* Current location
+* Availability
+* Rotation
+* Next assignment
+* Turnaround requirements
+* Swap possibilities
+
+### Gates
+
+* Occupancy
+* Availability
+* Conflicts
+* Arrival/departure compatibility
+* Alternative gates
+
+---
+
+# 🔄 Continuous Auto-Replanning
+
+Airline operations are constantly changing.
+
+When a new disruption occurs:
+
+```text
+🚨 New Event
+     │
+     ▼
+🔍 Detect Change
+     │
+     ▼
+🔄 Recalculate Network
+     │
+     ▼
+🧩 Re-check Constraints
+     │
+     ▼
+🤖 Generate New Plans
+     │
+     ▼
+🎲 Simulate Alternatives
+     │
+     ▼
 🧠 Explain Recommendation
-      ↓
+     │
+     ▼
 👨‍✈️ Human Approval
-      ↓
-🔄 Re-plan When Conditions Change
+```
 
-AeroSync AI does not replace the airline operations controller. It provides intelligent, explainable decision support while keeping the final decision with the human operator.
+This allows AeroSync to continuously adapt instead of relying on a single recovery plan.
 
-🖥️ Product Preview
-📊 AeroSync Operations Dashboard
-<!-- Replace this path with your actual dashboard screenshot --> <div align="center"> <img src="screenshots/dashboard.png" alt="AeroSync AI Dashboard" width="900"/> <br/>
+---
 
-AeroSync AI — Airline Operations Control Dashboard
+# 🏗️ System Architecture
 
-</div>
+```text
+                    🌐 AeroSync Web App
+                           │
+                           ▼
+                  ⚛️ React + Tailwind
+                           │
+                           ▼
+                    🚀 REST API
+                           │
+                           ▼
+                   🟢 Node.js / Express
+                    │              │
+                    │              │
+                    ▼              ▼
+              🗄️ Supabase       🤖 AI Service
+              PostgreSQL             │
+                                    ▼
+                              🐍 Python
+                                    │
+                         ┌──────────┼──────────┐
+                         ▼          ▼          ▼
+                    OR-Tools    Prediction   Simulation
+```
 
-🚨 Disruption Center
-<div align="center"> <img src="screenshots/disruption-center.png" alt="AeroSync AI Disruption Center" width="900"/> <br/>
+---
 
-Monitor disruptions and visualize their operational impact.
+# 🛠️ Technology Stack
 
-</div>
+### 🎨 Frontend
 
-🤖 AI Recovery Planner
-<div align="center"> <img src="screenshots/recovery-plan.png" alt="AeroSync AI Recovery Planner" width="900"/> <br/>
+* ⚛️ React
+* 🎨 Tailwind CSS
+* 🗺️ Interactive Maps
+* 📊 Data Visualization
+* ⚡ Vite
 
-Compare multiple recovery alternatives with feasibility and impact.
+### ⚙️ Backend
 
-</div>
+* 🟢 Node.js
+* 🚀 Express.js
+* 🔗 REST APIs
+* 🔐 Authentication & Authorization
 
-🎲 What-If Sandbox
-<div align="center"> <img src="screenshots/what-if.png" alt="AeroSync AI What If Sandbox" width="900"/> <br/>
+### 🗄️ Database
 
-Simulate recovery decisions before applying them.
+* 🐘 PostgreSQL
+* ⚡ Supabase
 
-</div>
+### 🤖 AI / Optimization
 
-🌐 World Airline Network
-<div align="center"> <img src="screenshots/network-map.png" alt="AeroSync AI World Network Map" width="900"/> <br/>
+* 🐍 Python
+* 🧩 Google OR-Tools
+* 🌳 XGBoost / LightGBM
+* 🌐 Graph Analysis
+* 🎲 Monte Carlo Simulation
+* 🧠 LLM
+* 📚 RAG
 
-Visualize airports, routes, aircraft and disruption cascades.
+### 🚀 Deployment
 
-</div>
+* ▲ Vercel — Frontend
+* 🚀 Render — Backend / AI Service
+* ⚡ Supabase — Database
 
-✨ Key Features
-<table> <tr> <td width="50%">
-🚨 Disruption Center
+---
 
-Centralized monitoring of:
+# 📁 Project Structure
 
-Flight delays
-Cancellations
-Aircraft disruptions
-Crew disruptions
-Gate conflicts
-Connection risks
-Severity levels
-</td> <td width="50%">
-🤖 AI Recovery Planner
-
-Generate and compare:
-
-Aircraft swaps
-Flight adjustments
-Passenger rebooking
-Alternative recovery plans
-Feasibility scores
-Operational impact
-</td> </tr> <tr> <td width="50%">
-🌐 Disruption Cascade Map
-
-Understand how a single disruption propagates through:
-
-Aircraft rotations
-Crew
-Gates
-Passengers
-Connecting flights
-Network
-</td> <td width="50%">
-🎲 What-If Sandbox
-
-Test:
-
-Aircraft swaps
-Flight delays
-Rebooking strategies
-Gate changes
-Crew alternatives
-
-before applying the decision.
-
-</td> </tr> <tr> <td width="50%">
-👨‍✈️ Crew & FDTL
-
-Monitor:
-
-Crew availability
-Duty hours
-Rest requirements
-Assignment conflicts
-FDTL risk
-Next-flight compatibility
-</td> <td width="50%">
-👥 Passenger Impact
-
-Analyze:
-
-Affected passengers
-Connecting passengers
-Missed connection risk
-Available seats
-Rebooking options
-Passenger priority
-</td> </tr> <tr> <td width="50%">
-🛫 Gates & Aircraft
-
-Monitor:
-
-Aircraft availability
-Aircraft rotations
-Gate occupancy
-Gate conflicts
-Turnaround time
-Alternative resources
-</td> <td width="50%">
-
-🔄 Auto-Replan
-
-When new disruptions occur:
-New Event
-   ↓
-Recalculate
-   ↓
-Re-check Constraints
-   ↓
-Generate New Plan
-</td> </tr> </table>
-
-🧠 AI Architecture
-
-AeroSync AI follows a Hybrid AI Architecture.
-
-We don't depend on one AI model for everything.
-
-Different technologies solve different operational problems.
-                       🚨 DISRUPTION
-                             │
-                             ▼
-                     🔍 Impact Analysis
-                             │
-                             ▼
-                  🔮 Delay Risk Prediction
-                             │
-                             ▼
-                  🧩 Constraint Validation
-                             │
-                             ▼
-                    🤖 OR-Tools Optimizer
-                             │
-                             ▼
-                  📋 Recovery Alternatives
-                             │
-                             ▼
-                     🎲 What-If Simulation
-                             │
-                             ▼
-                      🧠 AI Copilot
-                             │
-                             ▼
-                     👨‍✈️ Human Approval
-                             │
-                             ▼
-                       🔄 Auto-Replan
-
-
-🤖 AI Technologies
-
-| Technology                    | Role in AeroSync                             |
-| ----------------------------- | -------------------------------------------- |
-| 🧩 **OR-Tools**               | Recovery optimization and constraint solving |
-| 🌳 **XGBoost / LightGBM**     | Delay and disruption risk prediction         |
-| 🌐 **Graph Analysis**         | Network and cascade impact analysis          |
-| 🎲 **Monte Carlo Simulation** | What-If scenario analysis                    |
-| 🧠 **LLM**                    | AI Copilot and natural-language explanations |
-| 📚 **RAG**                    | Retrieve operational rules and policies      |
-| 🚨 **Isolation Forest**       | Detect unusual operational patterns          |
-
-🧩 OR-Tools — Recovery Optimization
-
-OR-Tools acts as the core optimization engine.
-
-It can evaluate:
-Aircraft
-   +
-Crew
-   +
-Gate
-   +
-Flight Timing
-   +
-Passenger Connections
-   +
-Operational Constraints
-Then generate feasible recovery options.
-Operational Constraints
-          ↓
-      OR-Tools
-          ↓
- ┌────────┼────────┐
- ↓        ↓        ↓
-Plan A   Plan B   Plan C
-
-📁 Project Structure
+```text
 AeroSync-AI/
 │
 ├── 📁 frontend/
 │   ├── 📁 src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   └── data/
+│   │   ├── 📁 components/
+│   │   ├── 📁 pages/
+│   │   ├── 📁 services/
+│   │   └── 📁 data/
 │   ├── package.json
 │   └── vite.config.js
 │
 ├── 📁 backend/
-│   ├── config/
-│   ├── controllers/
-│   ├── data/
-│   ├── middleware/
-│   ├── routes/
-│   ├── services/
-│   ├── utils/
+│   ├── 📁 config/
+│   ├── 📁 controllers/
+│   ├── 📁 data/
+│   ├── 📁 middleware/
+│   ├── 📁 routes/
+│   ├── 📁 services/
+│   ├── 📁 utils/
 │   ├── schema.sql
 │   ├── server.js
 │   └── package.json
 │
 ├── 📁 ai-service/
-│   ├── optimizer/
+│   ├── 📁 optimizer/
 │   │   ├── constraints.py
 │   │   └── recovery_optimizer.py
 │   ├── main.py
@@ -358,11 +675,98 @@ AeroSync-AI/
 ├── .gitignore
 ├── .oxlintrc.json
 └── README.md
+```
 
-👥 Team AeroSync AI
+---
+
+# 🔌 API Architecture
+
+AeroSync follows a modular REST API architecture.
+
+```text
+Frontend
+   │
+   ▼
+Express REST API
+   │
+   ├── ✈️ Flights
+   ├── 🚨 Disruptions
+   ├── 🤖 Recovery Plans
+   ├── 👨‍✈️ Crew
+   ├── 🛫 Gates
+   ├── 👥 Passengers
+   └── 🌐 Network
+          │
+          ▼
+      AI Service
+          │
+          ▼
+      Optimization
+```
+
+---
+
+# 🎯 Why AeroSync?
+
+### Existing systems often answer:
+
+> **"What is happening?"**
+
+### AeroSync aims to answer:
+
+> **"What is happening?"**
+> **"What will happen next?"**
+> **"What are my options?"**
+> **"Which option is safer?"**
+> **"Why is this option recommended?"**
+> **"What happens if I choose another option?"**
+
+---
+
+# 🚀 What Makes AeroSync Different?
+
+### 🌐 1. Network-Level Thinking
+
+Instead of optimizing a single flight, AeroSync considers the **connected operational network**.
+
+### 🧠 2. Explainable Recovery
+
+The system does not simply produce a recommendation.
+
+It helps explain:
+
+> **Why this recovery plan is preferred.**
+
+### 🎲 3. Decision Before Execution
+
+The What-If Sandbox allows controllers to simulate decisions before applying them.
+
+### 🔄 4. Continuous Replanning
+
+New disruption → New analysis → New recovery plan.
+
+### 👨‍✈️ 5. Human-in-the-Loop
+
+AI supports the controller rather than making uncontrolled operational decisions.
+
+---
+
+# 🏆 Project Vision
+
+> **AeroSync AI — Turning Airline Disruption Management from Reactive Decision-Making into Intelligent, Explainable, Network-Aware Recovery.**
+
+Our vision is to build a future where airline operations teams can respond to disruptions **faster, smarter, and with greater confidence**.
+
+---
+
+# 👥 Team AeroSync AI
+
 <div align="center">
-🏆 Our Team
+
+## 🏆 Meet the Team
+
 </div>
+
 | 👤 Team Member             | 💼 Role                                   |
 | -------------------------- | ----------------------------------------- |
 | 👑 **Meena R**             | **Team Leader & UI/UX Designer**          |
@@ -370,4 +774,72 @@ AeroSync-AI/
 | 💻 **Thirusenthilkumar C** | **Full Stack Developer & AI Integration** |
 | 🎨 **Sagaya Hervin A**     | **UI/UX & Visual Designer**               |
 
+---
 
+# 🧑‍💻 Team Contributions
+
+### 👑 Meena R
+
+**Team Leader & UI/UX Designer**
+
+* Product direction
+* UI/UX design
+* User flow
+* Operational dashboard design
+
+### ⚙️ Ayyappan R
+
+**Backend Developer**
+
+* Backend architecture
+* REST APIs
+* Database integration
+* Server-side logic
+
+### 💻 Thirusenthilkumar C
+
+**Full Stack Developer & AI Integration**
+
+* Frontend development
+* Backend integration
+* AI service integration
+* Recovery optimization workflow
+
+### 🎨 Sagaya Hervin A
+
+**UI/UX & Visual Designer**
+
+* Visual design
+* Interface improvements
+* Product presentation
+* Design consistency
+
+---
+
+# 📌 Project Status
+
+<div align="center">
+
+### 🚧 Under Active Development
+
+AeroSync AI is being actively developed as an **AI-powered airline disruption recovery prototype**.
+
+</div>
+
+---
+
+# ⭐ If You Like AeroSync
+
+If you find AeroSync interesting, consider giving the repository a ⭐ on GitHub.
+
+<div align="center">
+
+### ✈️ AeroSync AI
+
+**Detect. Predict. Optimize. Simulate. Explain. Recover.**
+
+<br>
+
+**Built for the future of intelligent airline operations.**
+
+</div>
