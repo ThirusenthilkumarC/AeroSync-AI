@@ -1,16 +1,92 @@
-# React + Vite
+# ✈️ AeroSync AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+### AI-Powered Airline Disruption Recovery & Decision Support System
 
-Currently, two official plugins are available:
+> **Recover Faster. Decide Smarter. Keep Every Connection Moving.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[![React](https://img.shields.io/badge/Frontend-React.js-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Build-Vite-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
+[![Node.js](https://img.shields.io/badge/Backend-Node.js-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/API-Express.js-000000?logo=express&logoColor=white)](https://expressjs.com/)
+[![Python](https://img.shields.io/badge/AI-Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Supabase](https://img.shields.io/badge/Database-Supabase-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](#license)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚨 Problem Statement
 
-## Expanding the Oxlint configuration
+A single delayed aircraft or crew member can create a chain reaction across an airline network.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+A disruption to one flight can affect:
+
+- ✈️ Aircraft rotations
+- 👨‍✈️ Crew duty limits
+- 🛫 Gate availability
+- 👥 Passenger connections
+- 🔄 Downstream flights
+- 🏢 Airport operations
+- 📊 Overall airline network performance
+
+Traditional disruption recovery can require operations teams to manually analyze multiple connected factors under intense time pressure.
+
+### The Core Challenge
+
+> **How can an airline quickly identify the impact of a disruption and generate a rule-compliant recovery plan without creating additional problems elsewhere in the network?**
+
+---
+
+# 💡 Our Solution
+
+**AeroSync AI** is an intelligent airline disruption recovery and decision-support platform.
+
+When a disruption occurs, AeroSync analyzes the operational network and helps the airline operations team understand:
+
+- What caused the disruption
+- Which flights are affected
+- Which aircraft are impacted
+- Which crew members are at risk
+- Which gates are affected
+- Which passengers may miss connections
+- What recovery options are available
+- What side effects each option may create
+
+The platform then generates and compares recovery alternatives, allows operators to test them using a **What-If Sandbox**, and provides an explainable recommendation before the final decision is approved by a human operator.
+
+---
+
+# 🎯 AeroSync AI Workflow
+
+```text
+                🚨 DISRUPTION
+                     │
+                     ▼
+            🔍 Impact Detection
+                     │
+                     ▼
+            🌐 Cascade Analysis
+                     │
+                     ▼
+          🔮 Risk / Delay Prediction
+                     │
+                     ▼
+          🧩 Constraint Validation
+                     │
+                     ▼
+            🤖 Recovery Optimizer
+                     │
+                     ▼
+          📋 Multiple Recovery Plans
+                     │
+                     ▼
+             🎲 What-If Simulation
+                     │
+                     ▼
+             🧠 AI Explanation
+                     │
+                     ▼
+             👨‍✈️ Human Approval
+                     │
+                     ▼
+               🔄 Auto-Replan
