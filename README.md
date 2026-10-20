@@ -1,4 +1,5 @@
 # ✈️ AeroSync AI
+# remaining updates is coming soon🔥
 
 ### 🧠 AI-Powered Airline Disruption Recovery & Decision Support Platform
 
