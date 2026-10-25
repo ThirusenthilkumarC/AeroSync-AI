@@ -98,7 +98,7 @@ export default function AICopilotPanel({ selectedAirline = 'Air India' }) {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed right-3 sm:right-6 bottom-16 sm:bottom-20 z-40 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-slate-950/90 text-white border border-cyan-500/50 backdrop-blur-xl shadow-[0_8px_25px_rgba(6,182,212,0.3)] hover:scale-105 transition-all duration-200 flex items-center gap-2 sm:gap-3 font-label-code text-xs group"
+          className="fixed right-3 sm:right-6 bottom-4 sm:bottom-6 z-40 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-slate-950/90 text-white border border-cyan-500/50 backdrop-blur-xl shadow-[0_8px_25px_rgba(6,182,212,0.3)] hover:scale-105 transition-all duration-200 flex items-center gap-2 sm:gap-3 font-label-code text-xs group"
           title="Open AIR-OPT AI Copilot Operational Decision Support"
         >
           <div className="relative flex items-center justify-center">
@@ -119,7 +119,7 @@ export default function AICopilotPanel({ selectedAirline = 'Air India' }) {
 
       {/* 2. EXPANDED AI COPILOT PANEL */}
       {isOpen && (
-        <div className="fixed right-2 sm:right-4 md:right-6 bottom-16 sm:bottom-20 z-40 w-[calc(100vw-1rem)] sm:w-[400px] md:w-[420px] max-h-[calc(100vh-80px)] sm:max-h-[calc(100vh-120px)] flex flex-col rounded-2xl bg-slate-950/95 border border-cyan-500/40 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.6)] text-white font-label-code overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
+        <div className="fixed right-2 sm:right-4 md:right-6 bottom-4 sm:bottom-6 z-40 w-[calc(100vw-1rem)] sm:w-[400px] md:w-[420px] max-h-[calc(100vh-80px)] sm:max-h-[calc(100vh-120px)] flex flex-col rounded-2xl bg-slate-950/95 border border-cyan-500/40 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.6)] text-white font-label-code overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
           
           {/* Header */}
           <div className="px-5 py-3.5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between shrink-0">
