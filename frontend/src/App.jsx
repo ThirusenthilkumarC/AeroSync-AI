@@ -14,6 +14,7 @@ import PassengerImpactPage from './pages/PassengerImpactPage';
 import PassengerViewPage from './pages/PassengerViewPage';
 import NotificationsPage from './pages/NotificationsPage';
 import DecisionReplayPage from './pages/DecisionReplayPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   const [autoReplanEnabled, setAutoReplanEnabled] = useState(false);
@@ -42,6 +43,7 @@ export default function App() {
               />
             } 
           />
+          <Route path="/recovery-plan" element={<Navigate to="/recovery" replace />} />
           <Route path="/recovery-sandbox" element={<RecoverySandboxPage selectedAirline={selectedAirline} />} />
           <Route path="/flights" element={<FlightManagementPage selectedAirline={selectedAirline} />} />
           <Route path="/crew" element={<CrewManagementPage selectedAirline={selectedAirline} />} />
@@ -50,7 +52,7 @@ export default function App() {
           <Route path="/passenger-view" element={<PassengerViewPage selectedAirline={selectedAirline} />} />
           <Route path="/notifications" element={<NotificationsPage selectedAirline={selectedAirline} />} />
           <Route path="/decision-replay" element={<DecisionReplayPage selectedAirline={selectedAirline} />} />
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </AppShell>
     </BrowserRouter>

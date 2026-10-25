@@ -4,9 +4,7 @@ import {
   getFlight,
   getDisruptions,
   getCascade,
-  getForecast,
   getRecoveryPlans,
-  generateRecovery,
   runSimulation,
   getCrew,
   getAircraft,
@@ -398,8 +396,7 @@ export const processQuery = async (query, currentContext = {}, selectedAirline =
       }
 
       case 'GATE': {
-        const gatesRes = await getGates();
-        const gatesData = gatesRes.data || [];
+        await getGates();
 
         return {
           id: `ai-${Date.now()}`,
@@ -472,8 +469,7 @@ export const processQuery = async (query, currentContext = {}, selectedAirline =
       }
 
       case 'SIMULATION': {
-        const simRes = await runSimulation({ scenario: 'AIRCRAFT_UNAVAILABLE', flightId: targetFlightId });
-        const simData = simRes.data || {};
+        await runSimulation({ scenario: 'AIRCRAFT_UNAVAILABLE', flightId: targetFlightId });
 
         return {
           id: `ai-${Date.now()}`,

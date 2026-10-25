@@ -98,28 +98,28 @@ export default function AICopilotPanel({ selectedAirline = 'Air India' }) {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed right-6 bottom-20 z-40 px-4 py-3 rounded-2xl bg-slate-950/90 text-white border border-cyan-500/50 backdrop-blur-xl shadow-[0_8px_25px_rgba(6,182,212,0.3)] hover:scale-105 transition-all duration-200 flex items-center gap-3 font-label-code text-xs group"
+          className="fixed right-3 sm:right-6 bottom-16 sm:bottom-20 z-40 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-slate-950/90 text-white border border-cyan-500/50 backdrop-blur-xl shadow-[0_8px_25px_rgba(6,182,212,0.3)] hover:scale-105 transition-all duration-200 flex items-center gap-2 sm:gap-3 font-label-code text-xs group"
           title="Open AIR-OPT AI Copilot Operational Decision Support"
         >
           <div className="relative flex items-center justify-center">
             <span className="absolute -inset-1.5 rounded-full bg-cyan-400/40 animate-ping"></span>
-            <div className="w-7 h-7 rounded-xl bg-primary-container text-cyan-300 flex items-center justify-center font-bold shadow-sm">
-              <Sparkles className="w-4 h-4 text-cyan-300" />
+            <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-primary-container text-cyan-300 flex items-center justify-center font-bold shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-300" />
             </div>
           </div>
           <div className="flex flex-col text-left">
-            <div className="font-extrabold text-white flex items-center gap-1.5">
+            <div className="font-extrabold text-white flex items-center gap-1.5 text-[11px] sm:text-xs">
               <span>AIR-OPT AI Copilot</span>
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             </div>
-            <span className="text-[10px] text-cyan-300/80 font-medium">Operational Decision Support</span>
+            <span className="text-[9px] sm:text-[10px] text-cyan-300/80 font-medium hidden xs:inline">Decision Support</span>
           </div>
         </button>
       )}
 
       {/* 2. EXPANDED AI COPILOT PANEL */}
       {isOpen && (
-        <div className="fixed right-4 md:right-6 bottom-20 z-40 w-[calc(100vw-2rem)] sm:w-[400px] md:w-[420px] max-h-[calc(100vh-120px)] flex flex-col rounded-2xl bg-slate-950/95 border border-cyan-500/40 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.6)] text-white font-label-code overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
+        <div className="fixed right-2 sm:right-4 md:right-6 bottom-16 sm:bottom-20 z-40 w-[calc(100vw-1rem)] sm:w-[400px] md:w-[420px] max-h-[calc(100vh-80px)] sm:max-h-[calc(100vh-120px)] flex flex-col rounded-2xl bg-slate-950/95 border border-cyan-500/40 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.6)] text-white font-label-code overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
           
           {/* Header */}
           <div className="px-5 py-3.5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between shrink-0">

@@ -83,10 +83,13 @@ app.use(notFound);
 app.use(errorHandler);
 
 // Start HTTP Server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`==================================================`);
   console.log(`✈ AeroSync AI Backend Server Running on Port ${PORT}`);
   console.log(`  Health Check : http://localhost:${PORT}/api/health`);
   console.log(`  Environment  : ${process.env.NODE_ENV || 'development'}`);
   console.log(`==================================================`);
 });
+
+export default app;
+export { app, server };

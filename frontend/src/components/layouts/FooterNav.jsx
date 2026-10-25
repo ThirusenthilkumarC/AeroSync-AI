@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { isRouteActive } from '../../utils/routeUtils';
 import { 
   Activity, AlertTriangle, RefreshCw, Cpu, Plane, Users, Building2, Radio
 } from 'lucide-react';
@@ -35,15 +36,16 @@ export default function FooterNav({ selectedAirline }) {
         </div>
 
         {/* Center: All 7 Navigation Items Guaranteed Visible */}
-        <nav className="w-full md:w-auto flex flex-wrap md:flex-nowrap items-center justify-center gap-1 sm:gap-1.5 lg:gap-2.5 py-0.5">
+        <nav className="w-full md:w-auto flex items-center justify-start md:justify-center gap-1 sm:gap-1.5 lg:gap-2.5 py-0.5 overflow-x-auto no-scrollbar">
           {footerNavItems.map((item) => {
             const Icon = item.icon;
-            const isActive = location.pathname === item.path || (item.path !== '/' && location.pathname.startsWith(item.path));
+            const isActive = isRouteActive(location.pathname, item.path);
 
             return (
               <NavLink
                 key={item.path}
                 to={item.path}
+                end
                 className={({ isActive: linkActive }) => {
                   const active = linkActive || isActive;
                   return `group relative flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 lg:px-4 py-1.5 sm:py-2 rounded-xl text-xs lg:text-sm font-label-code font-bold transition-all duration-150 whitespace-nowrap active:scale-95 shrink-0 ${

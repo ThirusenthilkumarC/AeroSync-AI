@@ -61,6 +61,34 @@ export const getFlight = async (id) => {
   return apiCall(`/flights/${id}`, { method: 'GET' }, fallback);
 };
 
+export const searchFlightsApi = async (query = '') => {
+  const fallback = flightsData.filter(f => 
+    f.flightNumber.toLowerCase().includes(query.toLowerCase()) ||
+    f.origin.toLowerCase().includes(query.toLowerCase()) ||
+    f.destination.toLowerCase().includes(query.toLowerCase()) ||
+    f.tailNumber.toLowerCase().includes(query.toLowerCase())
+  );
+  return apiCall('/flights/search', { method: 'GET', params: { q: query } }, fallback);
+};
+
+export const createFlight = async (flightData) => {
+  const newFlight = {
+    id: `flt-${Date.now()}`,
+    ...flightData,
+    statusType: flightData.status === 'Delayed' ? 'critical' : flightData.status === 'Boarding' ? 'warning' : 'normal',
+    delayMinutes: flightData.delayMinutes || 0
+  };
+  return apiCall('/flights', { method: 'POST', data: flightData }, newFlight);
+};
+
+export const updateFlight = async (id, flightData) => {
+  return apiCall(`/flights/${id}`, { method: 'PUT', data: flightData }, { id, ...flightData });
+};
+
+export const deleteFlight = async (id) => {
+  return apiCall(`/flights/${id}`, { method: 'DELETE' }, { id, success: true });
+};
+
 export const getAvailableFlights = async (filters = {}) => {
   return apiCall('/flights', { method: 'GET', params: filters }, availableFlightsData);
 };
@@ -88,6 +116,19 @@ export const getFlightSeats = async (flightId) => {
 // 3. Disruptions & Cascade API Services
 export const getDisruptions = async () => {
   return apiCall('/disruptions', { method: 'GET' }, activeDisruptions);
+};
+
+export const createDisruption = async (disruptionData) => {
+  const newDis = {
+    id: `dis-${Date.now()}`,
+    ...disruptionData,
+    detected_at: new Date().toISOString()
+  };
+  return apiCall('/disruptions', { method: 'POST', data: disruptionData }, newDis);
+};
+
+export const updateDisruption = async (id, disruptionData) => {
+  return apiCall(`/disruptions/${id}`, { method: 'PUT', data: disruptionData }, { id, ...disruptionData });
 };
 
 export const getCascade = async (id = 'dis-6e1234-atc') => {

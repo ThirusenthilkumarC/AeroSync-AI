@@ -3,6 +3,7 @@ import { getDashboardSummary, getNetworkHealth } from '../controllers/dashboard.
 
 const router = Router();
 
+router.get('/', getDashboardSummary);
 router.get('/summary', getDashboardSummary);
 router.get('/network-health', getNetworkHealth);
 

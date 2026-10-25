@@ -4,10 +4,14 @@ import {
   Plane, ArrowRight, RefreshCw, Cpu, Layers, UserCheck, Sparkles, Building2
 } from 'lucide-react';
 import { crewData } from '../data/crew';
-import { getAvailableFlights, getNetworkAvailability, getAlternativeFlights } from '../services/api';
+import { getAvailableFlights, getNetworkAvailability, getAlternativeFlights, getCrew } from '../services/api';
 import FlightSeatMapDrawer from '../components/crew/FlightSeatMapDrawer';
 
 export default function CrewManagementPage({ selectedAirline }) {
+  // Crew State & Loading
+  const [crewList, setCrewList] = useState(crewData);
+  const [isCrewLoading, setIsCrewLoading] = useState(true);
+
   // Crew Search & Filter State
   const [crewSearch, setCrewSearch] = useState('');
   const [crewStatusFilter, setCrewStatusFilter] = useState('ALL');
@@ -32,14 +36,20 @@ export default function CrewManagementPage({ selectedAirline }) {
   useEffect(() => {
     let isMounted = true;
     const loadData = async () => {
-      const flRes = await getAvailableFlights({ origin: originFilter, destination: destFilter, status: flightStatusFilter });
-      const netRes = await getNetworkAvailability();
-      const altRes = await getAlternativeFlights('6E1234');
+      setIsCrewLoading(true);
+      const [flRes, netRes, altRes, crRes] = await Promise.all([
+        getAvailableFlights({ origin: originFilter, destination: destFilter, status: flightStatusFilter }),
+        getNetworkAvailability(),
+        getAlternativeFlights('6E1234'),
+        getCrew()
+      ]);
 
       if (isMounted) {
-        setAvailableFlights(flRes.data);
-        setNetworkDestinations(netRes.data);
-        setAlternativeFlights(altRes.data);
+        setAvailableFlights(flRes.data || []);
+        setNetworkDestinations(netRes.data || []);
+        setAlternativeFlights(altRes.data || []);
+        setCrewList(Array.isArray(crRes?.data) && crRes.data.length > 0 ? crRes.data : crewData);
+        setIsCrewLoading(false);
         
         const now = new Date();
         const hrs = String(now.getUTCHours()).padStart(2, '0');
@@ -53,11 +63,11 @@ export default function CrewManagementPage({ selectedAirline }) {
   }, [originFilter, destFilter, flightStatusFilter]);
 
   // Filter Crew
-  const filteredCrew = crewData.filter(crew => {
+  const filteredCrew = crewList.filter(crew => {
     const matchesSearch = 
-      crew.captain.toLowerCase().includes(crewSearch.toLowerCase()) ||
-      crew.crewCode.toLowerCase().includes(crewSearch.toLowerCase()) ||
-      crew.id.toLowerCase().includes(crewSearch.toLowerCase());
+      (crew.captain || '').toLowerCase().includes(crewSearch.toLowerCase()) ||
+      (crew.crewCode || '').toLowerCase().includes(crewSearch.toLowerCase()) ||
+      (crew.id || '').toLowerCase().includes(crewSearch.toLowerCase());
     const matchesStatus = crewStatusFilter === 'ALL' || crew.status === crewStatusFilter;
     return matchesSearch && matchesStatus;
   });

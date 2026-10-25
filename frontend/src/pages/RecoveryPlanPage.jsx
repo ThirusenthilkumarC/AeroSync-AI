@@ -4,11 +4,12 @@ import {
   Sparkles, ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Clock, 
   HelpCircle, RefreshCw, X, FileText, Check, Cpu, Layers, DollarSign, Fuel, Activity, Play
 } from 'lucide-react';
-import { recoveryPlans, constraintValidations } from '../data/recoveryPlans';
-import { approveRecoveryPlan, rejectRecoveryPlan } from '../services/api';
+import { recoveryPlans as defaultPlans, constraintValidations } from '../data/recoveryPlans';
+import { getRecoveryPlans, approveRecoveryPlan, rejectRecoveryPlan } from '../services/api';
 
 export default function RecoveryPlanPage({ autoReplanEnabled, setAutoReplanEnabled }) {
   const navigate = useNavigate();
+  const [plansList, setPlansList] = useState(defaultPlans);
   const [selectedPlanId, setSelectedPlanId] = useState('plan-a');
   const [selectedVersion, setSelectedVersion] = useState('V1');
   const [explainDrawerAction, setExplainDrawerAction] = useState(null);
@@ -17,7 +18,15 @@ export default function RecoveryPlanPage({ autoReplanEnabled, setAutoReplanEnabl
   const [isProcessing, setIsProcessing] = useState(false);
   const [autoReplanMessage, setAutoReplanMessage] = useState(null);
 
-  const activePlan = recoveryPlans.find(p => p.id === selectedPlanId) || recoveryPlans[0];
+  useEffect(() => {
+    getRecoveryPlans().then(res => {
+      if (Array.isArray(res?.data) && res.data.length > 0) {
+        setPlansList(res.data);
+      }
+    }).catch(err => console.warn('[RecoveryPlan] Error loading plans:', err));
+  }, []);
+
+  const activePlan = plansList.find(p => p.id === selectedPlanId) || plansList[0] || defaultPlans[0];
 
   // Auto-replanning simulation effect
   useEffect(() => {
@@ -123,7 +132,7 @@ export default function RecoveryPlanPage({ autoReplanEnabled, setAutoReplanEnabl
         <div className="flex items-center gap-3">
           <span className="font-label-caps text-xs text-on-surface-variant uppercase font-bold">Plan Versions:</span>
           <div className="flex items-center gap-2">
-            {recoveryPlans.map((plan) => (
+            {plansList.map((plan) => (
               <button
                 key={plan.id}
                 onClick={() => {
@@ -163,7 +172,7 @@ export default function RecoveryPlanPage({ autoReplanEnabled, setAutoReplanEnabl
 
       {/* Plan Selector Cards (Plan A vs Plan B vs Plan C) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {recoveryPlans.map((plan) => (
+        {plansList.map((plan) => (
           <div
             key={plan.id}
             onClick={() => {
