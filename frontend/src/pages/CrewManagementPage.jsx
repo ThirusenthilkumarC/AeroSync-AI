@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Users, AlertTriangle, CheckCircle2, Clock, ShieldAlert, Search, Filter, 
   Plane, ArrowRight, RefreshCw, Cpu, Layers, UserCheck, Sparkles, Building2
@@ -8,6 +9,7 @@ import { getAvailableFlights, getNetworkAvailability, getAlternativeFlights, get
 import FlightSeatMapDrawer from '../components/crew/FlightSeatMapDrawer';
 
 export default function CrewManagementPage({ selectedAirline }) {
+  const navigate = useNavigate();
   // Crew State & Loading
   const [crewList, setCrewList] = useState(crewData);
   const [isCrewLoading, setIsCrewLoading] = useState(true);
@@ -326,9 +328,22 @@ export default function CrewManagementPage({ selectedAirline }) {
                     {flight.availableSeats} available / {flight.totalSeats} total
                   </td>
                   <td className="p-4">
-                    <button className="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-bold text-xs hover:bg-primary transition-colors">
-                      View Seat Map
-                    </button>
+                    <div className="flex items-center gap-1.5">
+                      <button 
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); setSelectedDrawerFlightId(flight.id); }}
+                        className="px-2.5 py-1.5 rounded-lg bg-primary-container text-on-primary font-bold text-xs hover:bg-primary transition-colors whitespace-nowrap"
+                      >
+                        Seat Map
+                      </button>
+                      <button 
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); navigate('/booking?flightId=' + flight.id); }}
+                        className="px-2.5 py-1.5 rounded-lg bg-secondary text-white font-bold text-xs hover:bg-secondary/90 transition-colors whitespace-nowrap"
+                      >
+                        Book Ticket
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

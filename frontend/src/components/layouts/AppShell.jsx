@@ -1,23 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import {
+  NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { 
   Menu, X, Bell, AlertTriangle, 
   Activity, RefreshCw, Plane, Users, Building2, UserCheck, PlayCircle, Eye, Cpu,
-  Radio
+  Radio,
+  LogOut,
+  Ticket
 } from 'lucide-react';
 import { airlinesList } from '../../data/airlines';
 import { isRouteActive } from '../../utils/routeUtils';
 import AICopilotPanel from '../copilot/AICopilotPanel';
+import { logoutUser, getStoredUser } from '../../services/api';
 
 export default function AppShell({ children, selectedAirline, setSelectedAirline }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Hide header and chrome on login page
-  const isLoginPage = location.pathname === '/login';
+  // Hide header and chrome on authentication pages
+  const isLoginPage = ['/login', '/register', '/forgot-password'].includes(location.pathname);
 
   const currentAirlineObj = airlinesList.find(a => a.id === selectedAirline) || airlinesList[0];
+
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const user = getStoredUser();
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, [location.pathname]);
+
+  const handleLogout = () => {
+    logoutUser();
+    navigate('/login');
+  };
 
   // The 7 primary navigation items aligned in the center of the top navigation bar
   const primaryNavItems = [
@@ -28,6 +46,7 @@ export default function AppShell({ children, selectedAirline, setSelectedAirline
     { label: 'Flights', path: '/flights', icon: Plane },
     { label: 'Crew', path: '/crew', icon: Users },
     { label: 'Gates & Aircraft', path: '/resources', icon: Building2 },
+    { label: 'Ticket Booking', path: '/booking', icon: Ticket, badge: 'SEATS' },
   ];
 
   // Extended navigation items for mobile drawer
@@ -194,6 +213,35 @@ export default function AppShell({ children, selectedAirline, setSelectedAirline
               <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error animate-pulse"></span>
             </button>
 
+            {/* Authenticated OCC Controller Profile & Logout */}
+            <div className="flex items-center gap-1.5 sm:gap-2 pl-1 sm:pl-2 border-l border-surface-container-highest shrink-0">
+              <div 
+                className="flex items-center gap-2 cursor-pointer select-none"
+                title={`Authenticated OCC Controller: ${currentUser?.name || 'Capt. Neha Sharma'}`}
+              >
+                <div className="w-8 h-8 rounded-xl bg-secondary-fixed/60 text-on-secondary-fixed flex items-center justify-center font-bold font-data-display text-xs border border-secondary/20 shadow-sm shrink-0">
+                  {currentUser?.name ? currentUser.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() : 'NS'}
+                </div>
+                <div className="hidden 2xl:flex flex-col">
+                  <span className="text-xs font-bold text-on-surface leading-tight truncate max-w-[120px]">
+                    {currentUser?.name || 'Capt. Neha Sharma'}
+                  </span>
+                  <span className="text-[9px] font-label-caps text-on-surface-variant uppercase font-semibold">
+                    {currentUser?.role || 'CHIEF OPS CONTROLLER'}
+                  </span>
+                </div>
+              </div>
+
+              <button
+                onClick={handleLogout}
+                className="p-1.5 sm:p-2 rounded-xl text-on-surface-variant hover:bg-error-container/60 hover:text-on-error-container transition-colors shrink-0"
+                title="Log out of AeroSync OCC"
+                aria-label="Log out of OCC"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
+            </div>
+
           </div>
 
         </div>
@@ -273,10 +321,37 @@ export default function AppShell({ children, selectedAirline, setSelectedAirline
               </nav>
             </div>
 
-            {/* Drawer Bottom Metadata */}
-            <div className="pt-4 border-t border-surface-container-highest text-[11px] text-on-surface-variant font-label-code space-y-1">
-              <div>Airline: <strong className="text-on-surface">{selectedAirline}</strong></div>
-              <div>System Integrity: <strong className="text-emerald-600">99.4%</strong></div>
+            {/* Drawer Bottom Metadata & Logout */}
+            <div className="pt-4 border-t border-surface-container-highest text-[11px] text-on-surface-variant font-label-code space-y-3">
+              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-low border border-surface-container-highest">
+                <div className="w-8 h-8 rounded-lg bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold font-data-display text-xs shrink-0">
+                  {currentUser?.name ? currentUser.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() : 'NS'}
+                </div>
+                <div className="flex flex-col overflow-hidden">
+                  <span className="text-xs font-bold text-on-surface truncate">
+                    {currentUser?.name || 'Capt. Neha Sharma'}
+                  </span>
+                  <span className="text-[9px] font-label-caps text-on-surface-variant uppercase truncate">
+                    {currentUser?.role || 'CHIEF OPS CONTROLLER'} • {currentUser?.station || 'DEL'}
+                  </span>
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <div>Airline: <strong className="text-on-surface">{selectedAirline}</strong></div>
+                <div>System Integrity: <strong className="text-emerald-600">99.4%</strong></div>
+              </div>
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleLogout();
+                }}
+                className="w-full py-2.5 px-3 rounded-xl bg-error-container/50 hover:bg-error-container text-on-error-container font-semibold text-xs flex items-center justify-center gap-2 transition-colors border border-error/20"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Sign Out of AeroSync OCC</span>
+              </button>
             </div>
           </div>
         </div>

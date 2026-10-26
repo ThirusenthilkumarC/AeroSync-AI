@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Plane, Search, Clock, MapPin, CheckCircle2, AlertCircle, ArrowRight, Bus, ShieldCheck } from 'lucide-react';
 import { passengersData } from '../data/passengers';
 
 export default function PassengerViewPage() {
-  const [pnrInput, setPnrInput] = useState('AS-89412');
-  const [activePax, setActivePax] = useState(passengersData[0]);
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const initialPnr = searchParams.get('pnr') || 'AS-89412';
+  const initialPax = passengersData.find(p => p.pnr.toLowerCase() === initialPnr.toLowerCase()) || passengersData[0];
+  const [pnrInput, setPnrInput] = useState(initialPnr);
+  const [activePax, setActivePax] = useState(initialPax);
+
+  useEffect(() => {
+    const queryPnr = searchParams.get('pnr');
+    if (queryPnr) {
+      setPnrInput(queryPnr);
+      const found = passengersData.find(
+        p => p.pnr.toLowerCase() === queryPnr.trim().toLowerCase()
+      );
+      if (found) setActivePax(found);
+    }
+  }, [searchParams]);
   const [searched, setSearched] = useState(true);
 
   const handleSearch = (e) => {
@@ -46,6 +62,26 @@ export default function PassengerViewPage() {
       {/* Main Content */}
       <main className="max-w-3xl w-full mx-auto px-4 py-8 space-y-6 my-auto">
         
+        {/* Direct Ticket Booking Quick Access Banner */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 rounded-2xl bg-slate-800/90 border border-cyan-500/30 text-xs font-mono shadow-lg">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">
+              ✈
+            </div>
+            <div>
+              <span className="text-white font-bold block">Need to book a flight ticket or select seats?</span>
+              <span className="text-slate-400 text-[11px]">Instant seat reservation & electronic boarding pass generation.</span>
+            </div>
+          </div>
+          <button
+            onClick={() => navigate('/booking')}
+            className="w-full sm:w-auto px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition-all shadow-md flex items-center justify-center gap-1.5 shrink-0"
+          >
+            <span>Book Flight Ticket</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
         {/* PNR Lookup Box */}
         <div className="p-6 rounded-3xl bg-slate-800/80 border border-slate-700 shadow-2xl space-y-4">
           <h1 className="text-2xl font-bold text-white text-center font-headline-xl">Track Your Flight & Connection</h1>

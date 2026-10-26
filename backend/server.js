@@ -16,6 +16,7 @@ import aircraftRoutes from './routes/aircraft.routes.js';
 import gatesRoutes from './routes/gates.routes.js';
 import passengersRoutes from './routes/passengers.routes.js';
 import notificationsRoutes from './routes/notifications.routes.js';
+import authRoutes from './routes/auth.routes.js';
 
 dotenv.config();
 
@@ -77,6 +78,7 @@ app.use('/api/aircraft', aircraftRoutes);
 app.use('/api/gates', gatesRoutes);
 app.use('/api/passengers', passengersRoutes);
 app.use('/api/notifications', notificationsRoutes);
+app.use('/api/auth', authRoutes);
 
 // Error Handling Middleware
 app.use(notFound);

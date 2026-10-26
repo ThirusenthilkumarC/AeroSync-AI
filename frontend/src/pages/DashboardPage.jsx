@@ -438,7 +438,7 @@ export default function DashboardPage({ selectedAirline = 'Air India' }) {
           4. FULL WORLD AIRLINE NETWORK MAP
          ========================================================================= */}
       <div className="w-full overflow-hidden rounded-2xl border border-surface-container-highest shadow-sm">
-        <WorldNetworkMap selectedAirline={selectedAirline} />
+        <WorldNetworkMap selectedAirline={selectedAirline} flights={liveFlights} />
       </div>
 
       {/* =========================================================================

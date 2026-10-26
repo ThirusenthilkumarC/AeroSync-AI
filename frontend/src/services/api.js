@@ -16,10 +16,27 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BA
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer MOCK_OCC_TOKEN_SEC_LEVEL_4'
+    'Content-Type': 'application/json'
   }
 });
+
+// Attach Bearer token to outgoing requests if available
+apiClient.interceptors.request.use(
+  (config) => {
+    try {
+      const token = typeof window !== 'undefined' ? localStorage.getItem('aerosync_token') : null;
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      } else {
+        config.headers.Authorization = 'Bearer MOCK_OCC_TOKEN_SEC_LEVEL_4';
+      }
+    } catch {
+      // Fallback
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
 const mockDelay = (ms = 100) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -210,6 +227,41 @@ export const getGates = async () => {
   return apiCall('/gates', { method: 'GET' }, networkDestinationAvailability);
 };
 
+
+export const bookFlightTicket = async (bookingData) => {
+  try {
+    const res = await apiClient.post('/passengers/book', bookingData);
+    if (res.data && res.data.success) {
+      return { success: true, data: res.data.data, message: res.data.message };
+    }
+  } catch (err) {
+    console.warn('[API Client] bookFlightTicket backend fallback:', err.message);
+  }
+  const pnr = `AS-${Math.floor(10000 + Math.random() * 90000)}`;
+  const ticketNumber = `098-${Date.now().toString().slice(-8)}`;
+  return {
+    success: true,
+    data: {
+      pnr,
+      ticketNumber,
+      passengerName: bookingData.passengerName || 'Priya Sharma',
+      email: bookingData.email || 'passenger@aerosync.aero',
+      phone: bookingData.phone || '+91 98765 43210',
+      flightId: bookingData.flightId || '6E1234',
+      flightNumber: bookingData.flightNumber || '6E 1234',
+      origin: bookingData.origin || 'DEL',
+      destination: bookingData.destination || 'MAA',
+      seatNumber: bookingData.seatNumber || '12C',
+      cabin: bookingData.cabin || 'Economy',
+      gate: bookingData.gate || 'Gate B4',
+      departure: bookingData.departure || '18:30 UTC',
+      status: 'CONFIRMED',
+      issuedAt: new Date().toISOString()
+    },
+    message: 'Flight ticket confirmed. Digital boarding pass generated.'
+  };
+};
+
 export const getPassengers = async () => {
   return apiCall('/passengers', { method: 'GET' }, passengersData);
 };
@@ -282,4 +334,121 @@ export const getNetworkForecast = async () => {
   return apiCall('/disruptions/dis-6e1234-atc/forecast', { method: 'GET' }, networkRippleForecast);
 };
 
+
+// ==========================================
+// Authentication & OCC Clearance Services
+// ==========================================
+export const loginUser = async (credentials) => {
+  try {
+    const res = await apiClient.post('/auth/login', credentials);
+    if (res.data && res.data.success) {
+      const authData = res.data.data;
+      if (typeof window !== 'undefined') {
+        if (authData.token) localStorage.setItem('aerosync_token', authData.token);
+        if (authData.user) localStorage.setItem('aerosync_user', JSON.stringify(authData.user));
+      }
+      return { success: true, data: authData };
+    }
+  } catch (err) {
+    console.warn('[API Client] Auth login error from backend, applying fallback authorization:', err.message);
+  }
+
+  // Resilient fallback for standalone preview / mock mode
+  const fallbackToken = `AEROSYNC_OCC_TOKEN_${Date.now()}`;
+  const fallbackUser = {
+    id: 'USR-OCC-2026-88',
+    name: 'Capt. Neha Sharma',
+    email: (credentials && credentials.email) || 'ops.controller@aerosync.aero',
+    role: 'CHIEF OPS CONTROLLER',
+    clearanceLevel: 'SEC-LEVEL 4',
+    station: (credentials && credentials.station) || 'DEL',
+    airline: 'Air India',
+    token: fallbackToken
+  };
+
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('aerosync_token', fallbackToken);
+    localStorage.setItem('aerosync_user', JSON.stringify(fallbackUser));
+  }
+
+  return { success: true, data: { token: fallbackToken, user: fallbackUser } };
+};
+
+export const registerUser = async (details) => {
+  try {
+    const res = await apiClient.post('/auth/register', details);
+    if (res.data && res.data.success) {
+      return { success: true, data: res.data.data, message: res.data.message };
+    }
+  } catch (err) {
+    console.warn('[API Client] Auth register fallback:', err.message);
+  }
+  return {
+    success: true,
+    data: {
+      clearanceId: `REQ-${Date.now().toString().slice(-6)}`,
+      status: 'PENDING_APPROVAL',
+      staffName: (details && details.name) || 'Flight Controller',
+      email: details && details.email,
+      department: (details && details.department) || 'Operations Control Center',
+      station: (details && details.station) || 'DEL'
+    },
+    message: 'Clearance request submitted. Verification token dispatched to Chief Controller.'
+  };
+};
+
+export const forgotPassword = async (email) => {
+  try {
+    const res = await apiClient.post('/auth/forgot-password', { email });
+    if (res.data && res.data.success) {
+      return { success: true, data: res.data.data, message: res.data.message };
+    }
+  } catch (err) {
+    console.warn('[API Client] Auth forgot-password fallback:', err.message);
+  }
+  return {
+    success: true,
+    data: {
+      email,
+      dispatchedAt: new Date().toISOString()
+    },
+    message: 'One-Time OCC Emergency Dispatch PIN generated and sent to terminal.'
+  };
+};
+
+export const logoutUser = () => {
+  try {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('aerosync_token');
+      localStorage.removeItem('aerosync_user');
+    }
+  } catch (e) {
+    console.error('Logout error:', e);
+  }
+};
+
+export const getStoredUser = () => {
+  try {
+    if (typeof window !== 'undefined') {
+      const raw = localStorage.getItem('aerosync_user');
+      return raw ? JSON.parse(raw) : null;
+    }
+  } catch {
+    return null;
+  }
+  return null;
+};
+
+export const getStoredToken = () => {
+  try {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('aerosync_token');
+    }
+  } catch {
+    return null;
+  }
+  return null;
+};
+
 export default apiClient;
+

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { X, Plane, CheckCircle2, AlertTriangle, Shield, Info, ArrowRight, UserCheck } from 'lucide-react';
 import { getFlightSeats } from '../../services/api';
 
 export default function FlightSeatMapDrawer({ flightId, onClose }) {
+  const navigate = useNavigate();
   const [flightData, setFlightData] = useState(null);
   const [selectedSeat, setSelectedSeat] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -134,9 +136,23 @@ export default function FlightSeatMapDrawer({ flightId, onClose }) {
                     Status: <strong className="text-white">{selectedSeat.status}</strong> • Cabin: {selectedSeat.cabin} • Type: {selectedSeat.type}
                   </div>
                 </div>
-                <button onClick={() => setSelectedSeat(null)} className="text-primary-fixed-dim hover:text-white">
-                  Dismiss
-                </button>
+                <div className="flex items-center gap-2">
+                  {selectedSeat.status === 'AVAILABLE' && (
+                    <button
+                      onClick={() => {
+                        onClose();
+                        navigate(`/booking?flightId=${flightData.id || flightId}&seat=${selectedSeat.seatNumber}`);
+                      }}
+                      className="px-3 py-1.5 rounded-lg bg-secondary text-white font-bold hover:bg-secondary/90 transition-colors flex items-center gap-1.5 shadow-sm"
+                    >
+                      <span>Book Seat ${selectedSeat.seatNumber}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                  <button onClick={() => setSelectedSeat(null)} className="text-primary-fixed-dim hover:text-white text-xs px-2 py-1">
+                    Dismiss
+                  </button>
+                </div>
               </div>
             )}
 
